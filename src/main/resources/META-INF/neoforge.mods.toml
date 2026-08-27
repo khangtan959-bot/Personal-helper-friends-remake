@@ -1,0 +1,29 @@
+modLoader="javafml"
+loaderVersion="[1,)"
+license="MIT"
+
+[[mixins]]
+config="personalhelperfriend.mixins.json"
+
+[[mods]]
+modId="personal_helper_friends_remake"
+version="1.0.0"
+displayName="Personal Helper Friends Remake"
+authors="helo"
+description='''
+This is a mod that makes the Personal Helper Friends mod more similar to thatmob's original video.
+'''
+
+[[dependencies.personal_helper_friends_remake]]
+    modId="neoforge"
+    type="required"
+    versionRange="[21.1.0,)"
+    ordering="NONE"
+    side="CLIENT"
+
+[[dependencies.personal_helper_friends_remake]]
+    modId="personalhelperfriend"
+    type="required"
+    versionRange="[0,)"
+    ordering="AFTER"
+    side="CLIENT"
