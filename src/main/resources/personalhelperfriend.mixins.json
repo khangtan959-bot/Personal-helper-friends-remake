@@ -1,5 +1,5 @@
 {
-  "required": true,
+  "required": false,
   "minVersion": "0.8",
   "package": "com.khangtan959.personalhelperfriend.mixin",
   "compatibilityLevel": "JAVA_21",
@@ -7,6 +7,6 @@
     "PersonalHelperFriendMonsterMeshMixin"
   ],
   "injectors": {
-    "defaultRequire": 1
+    "defaultRequire": 0
   }
 }

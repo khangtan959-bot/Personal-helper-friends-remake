@@ -15,13 +15,18 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.io.InputStream;
 import java.util.Optional;
 
-@Mixin(targets = "org.ExtraTortik.personalhelperfriend.content.client.render.PersonalHelperFriendMonsterRenderer")
+@Mixin(targets = "org.ExtraTortik.personalhelperfriend.content.client.render.PersonalHelperFriendMonsterRenderer", remap = false)
 public class PersonalHelperFriendMonsterMeshMixin {
 
     private static Object loadedBedrockModel = null;
     private static final ResourceLocation TEXTURE_LOC = ResourceLocation.parse("personalhelperfriend:textures/entity/personalhelperfriend_monster.png");
 
-    @Inject(method = "render(Lnet/minecraft/world/entity/LivingEntity;FFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V", at = @At("HEAD"), cancellable = true)
+    @Inject(
+        method = "render", 
+        at = @At("HEAD"), 
+        cancellable = true, 
+        remap = false
+    )
     private void injectVerityJsonModel(LivingEntity entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, CallbackInfo ci) {
         try {
             if (loadedBedrockModel == null) {
@@ -42,16 +47,13 @@ public class PersonalHelperFriendMonsterMeshMixin {
                 }
             }
 
-            // Chỉ cancel render mặc định khi bạn đã có trình render Bedrock thực tế
             if (loadedBedrockModel != null) {
                 poseStack.pushPose();
                 VertexConsumer vertexConsumer = bufferSource.getBuffer(RenderType.entityCutoutNoCull(TEXTURE_LOC));
                 
-                // TODO: Gọi hàm vẽ model từ thư viện Bedrock Model hoặc GeckoLib tại đây nếu có
+                // Mã render mô hình Bedrock của bạn ở đây
                 
                 poseStack.popPose();
-                // Bỏ comment dòng dưới khi đã gắn hàm vẽ hoàn chỉnh:
-                // ci.cancel();
             }
         } catch (Exception e) {
             e.printStackTrace();
