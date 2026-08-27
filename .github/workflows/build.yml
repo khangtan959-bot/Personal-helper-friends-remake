@@ -1,25 +1,43 @@
-name: Build
+name: NeoForge Submod Build
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+  workflow_dispatch: # Cho phép nhấn nút chạy thủ công trên giao diện GitHub
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          fetch-tags: true
+    # Bước 1: Tải mã nguồn từ kho lưu trữ (Repository) về máy chủ ảo
+    - name: Checkout Repository
+      uses: actions/checkout@v4
 
-      - name: Setup JDK 21
-        uses: actions/setup-java@v4
-        with:
-          java-version: '21'
-          distribution: 'temurin'
+    # Bước 2: Thiết lập môi trường Java 17 (Phiên bản chuẩn cho NeoForge/Minecraft mới)
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
 
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v4
+    # Bước 3: Cấu hình bộ nhớ đệm (Cache) để tăng tốc độ tải Gradle ở các lần chạy sau
+    - name: Setup Gradle Cache
+      uses: gradle/actions/setup-gradle@v4
 
-      - name: Build with Gradle
-        run: ./gradlew build
+    # Bước 4: Cấp quyền thực thi cho tệp lệnh Gradle Wrapper trên Linux
+    - name: Grant Execute Permission for Gradlew
+      run: chmod +x gradlew
+
+    # Bước 5: Tiến hành biên dịch mã nguồn Mixin và đóng gói tài nguyên Assets thành file .jar
+    - name: Build Mod with Gradle
+      run: ./gradlew build
+
+    # Bước 6: Thu thập file .jar đã đóng gói thành công và đẩy lên hệ thống để tải về
+    - name: Upload Compiled Mod Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: Verity-Monster-Mesh-Addon
+        path: build/libs/*.jar

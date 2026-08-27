@@ -1,0 +1,10 @@
+modLoader="javafml"
+loaderVersion="[1,)"
+license="MIT"
+
+[[mods]]
+modId="personal_helper_friends_remake"
+version="1.0.0"
+displayName="personal helper friends remake"
+authors="helo"
+description="This is a resource pack that makes the Personal Helper Friends mod more similar to thatmob's original video.
