@@ -1,0 +1,52 @@
+{
+  "cardboard_flying": {
+    "subtitle": "subtitles.personalhelperfriend.cardboard_flying",
+    "sounds": [
+      "personalhelperfriend:cardboard_flying"
+    ]
+  },
+  "cardboard_open": {
+    "subtitle": "subtitles.personalhelperfriend.cardboard_open",
+    "sounds": [
+      "personalhelperfriend:cardboard_open"
+    ]
+  },
+  "box_unwrap": {
+    "subtitle": "subtitles.personalhelperfriend.box_unwrap",
+    "sounds": [
+      "personalhelperfriend:box_unwrap"
+    ]
+  },
+  "bd": {
+    "subtitle": "subtitles.personalhelperfriend.bd",
+    "sounds": [
+      "personalhelperfriend:bd"
+    ]
+  },
+  "falling": {
+    "subtitle": "subtitles.personalhelperfriend.falling",
+    "sounds": [
+      "personalhelperfriend:falling"
+    ]
+  },
+  "creepymetalgrind": {
+    "sounds": [
+      "personalhelperfriend:creepymetalgrind"
+    ]
+  },
+  "monster_roar": {
+    "sounds": [
+      "personalhelperfriend:monster_roar"
+    ]
+  },
+  "blood_splatter": {
+    "sounds": [
+      "personalhelperfriend:blood_splatter"
+    ]
+  },
+  "self_shoot_post": {
+    "sounds": [
+      "personalhelperfriend:self_shoot_post"
+    ]
+  }
+}
